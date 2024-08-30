@@ -5,7 +5,7 @@ export default function QueueTimeList({ rides }: { rides: Ride[] }) {
         <ul>
             {rides.map(ride =>
                 <li key={ride.id}>
-                    {ride.name}: {ride.wait_time}
+                    {ride.name}: {ride.is_open ? ride.wait_time : "Closed"}
                 </li>
             )}
         </ul>
