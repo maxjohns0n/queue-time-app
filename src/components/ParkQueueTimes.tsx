@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useQuery } from "react-query";
 import { Land, Park, Ride } from '../types/park';
+import LandQueueTimes from './LandQueueTimes';
 import QueueTimeList from './QueueTimeList';
 
 interface FetchQueueTimeResponse {
@@ -36,13 +37,9 @@ export default function ParkQueueTimes({ park }: ParkQueueTimesProps) {
         <div>
             <h2>{park.name}</h2>
             {data.lands.map(land =>
-                <div key={land.id}>
-                    <h3>{land.name}</h3>
-                    <QueueTimeList rides={land.rides} />
-                </div>
+                <LandQueueTimes land={land} />
             )}
             <div>
-                <h3>Rides without a land</h3>
                 <QueueTimeList rides={data.rides} />
             </div>
         </div>
